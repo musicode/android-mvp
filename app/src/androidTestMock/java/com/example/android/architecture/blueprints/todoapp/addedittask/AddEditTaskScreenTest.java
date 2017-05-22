@@ -102,7 +102,7 @@ public class AddEditTaskScreenTest {
     @Test
     public void toolbarTitle_editTask_persistsRotation() {
         // Put a task in the repository and start the activity to edit it
-        TasksRepository.Companion.destroyInstance();
+        TasksRepository.destroyInstance();
         FakeTasksRemoteDataSource.getInstance().addTasks(new Task("Title1", "", TASK_ID, false));
         launchNewTaskActivity(TASK_ID);
 
@@ -123,7 +123,7 @@ public class AddEditTaskScreenTest {
         Intent intent = new Intent(InstrumentationRegistry.getInstrumentation()
                 .getTargetContext(), AddEditTaskActivity.class);
 
-        intent.putExtra(AddEditTaskFragment.Companion.getARGUMENT_EDIT_TASK_ID(), taskId);
+        intent.putExtra(AddEditTaskFragment.ARGUMENT_EDIT_TASK_ID, taskId);
         mActivityTestRule.launchActivity(intent);
     }
 
