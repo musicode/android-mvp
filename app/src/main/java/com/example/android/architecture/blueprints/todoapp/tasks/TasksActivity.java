@@ -49,14 +49,23 @@ public class TasksActivity extends AppCompatActivity {
 
         // Set up the toolbar.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        // setSupportActionBar 之后才可以对 toolbar 进行各种设置，否则会报错
+        // 不信你注释掉这句试试
         setSupportActionBar(toolbar);
+
+        // 下面三句只是为了设置左上角的图标
         ActionBar ab = getSupportActionBar();
+        // 设置左上角的图标
         ab.setHomeAsUpIndicator(R.drawable.ic_menu);
+        // 显示左上角的图标
         ab.setDisplayHomeAsUpEnabled(true);
 
         // Set up the navigation drawer.
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        // 设置状态栏的颜色
         mDrawerLayout.setStatusBarBackground(R.color.colorPrimaryDark);
+
+        // 监听抽屉点击事件
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) {
             setupDrawerContent(navigationView);
@@ -67,6 +76,7 @@ public class TasksActivity extends AppCompatActivity {
         if (tasksFragment == null) {
             // Create the fragment
             tasksFragment = TasksFragment.newInstance();
+            // 把事务封装进工具函数
             ActivityUtils.addFragmentToActivity(
                     getSupportFragmentManager(), tasksFragment, R.id.contentFrame);
         }
